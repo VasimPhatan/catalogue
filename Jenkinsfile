@@ -9,6 +9,7 @@ pipeline {
                 sh '''
                     pwd 
                     ls -ltrh
+                    npm install
                 '''
             }
 
