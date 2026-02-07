@@ -39,6 +39,28 @@ pipeline {
             }
         }
 
+          stage('pushing the artifacts to nexus') {
+            steps {
+                nexusArtifactUploader(
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: '172.31.92.44:8081/',  //give nexus url and port 
+                    groupId: 'com.roboshop',    //give group id 
+                    version: "1.0.0",         // give version number 
+                    repository: 'catalogue',   //repository name 
+                    credentialsId: 'nexus-auth', //for credentails create credentials in jenkins for nexus and give name in here.
+                    artifacts: [
+                        [artifactId: 'catalogue', 
+                        classifier: '',
+                        file: 'catalogue.zip',  // artifact that needs to pushed to nexus 
+                        type: 'zip'] //type of artifact
+                    ]
+                )
+            }
+        }
+
+        
+
     }
 
     post {
