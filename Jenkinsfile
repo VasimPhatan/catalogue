@@ -46,7 +46,7 @@ pipeline {
                     protocol: 'http',
                     nexusUrl: '172.31.92.44:8081/',  //give nexus url and port 
                     groupId: 'com.roboshop',    //give group id 
-                    version: "1.0.0",         // give version number 
+                    version: "1.0.1",         // give version number 
                     repository: 'catalogue',   //repository name 
                     credentialsId: 'nexus-auth', //for credentails create credentials in jenkins for nexus and give name in here.
                     artifacts: [
