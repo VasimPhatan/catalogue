@@ -29,12 +29,19 @@ pipeline {
             }
         }
 
-        stage('pshing to nexus') {
+        stage('building the code') {
             steps {
                 sh '''
-                echo "pushing"
+                echo "building the code"
                 '''
             }
+        }
+    }
+
+    post {
+        always {
+            echo "cleaning the workspace"
+             deleteDir()
         }
     }
 }
