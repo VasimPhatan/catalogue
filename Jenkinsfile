@@ -33,6 +33,8 @@ pipeline {
             steps {
                 sh '''
                 zip -r catalogue.zip ./* --exclude=.zip --exclude=.git
+                pwd 
+                ls -ltrh 
                 '''
             }
         }
@@ -42,7 +44,7 @@ pipeline {
     post {
         always {
             echo "cleaning the workspace"
-             //deleteDir()
+            deleteDir()
         }
     }
 }
