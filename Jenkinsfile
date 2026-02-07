@@ -21,27 +21,28 @@ pipeline {
             }
         }
 
-        stage('sonar scanning') {
-            steps {
-                sh '''
-                sonar-scanner
-                '''
-            }
-        }
+        // stage('sonar scanning') {
+        //     steps {
+        //         sh '''
+        //         sonar-scanner
+        //         '''
+        //     }
+        // }
 
         stage('building the code') {
             steps {
                 sh '''
-                echo "building the code"
+                zip -r catalogue.zip ./* --exclude=.zip --exclude=.git
                 '''
             }
         }
+
     }
 
     post {
         always {
             echo "cleaning the workspace"
-             deleteDir()
+             //deleteDir()
         }
     }
 }
