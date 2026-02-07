@@ -21,6 +21,12 @@ pipeline {
             }
         }
 
-        
+        stage('sonar scanning') {
+            steps {
+                sh '''
+                sonar-scanner
+                '''
+            }
+        }
     }
 }
