@@ -28,5 +28,13 @@ pipeline {
                 '''
             }
         }
+
+        stage('pshing to nexus') {
+            steps {
+                sh '''
+                echo "pushing"
+                '''
+            }
+        }
     }
 }
