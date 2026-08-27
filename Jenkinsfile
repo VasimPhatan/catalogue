@@ -9,7 +9,7 @@ pipeline {
         REGION = "us-east-1"
         COMPONENT = "catalogue"
         ACC_ID = "657082817363"
-        PROJECT = roboshop
+        PROJECT = "roboshop"
 
     }
 
