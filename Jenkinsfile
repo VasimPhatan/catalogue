@@ -3,7 +3,11 @@ pipeline {
     agent {
         label 'AGENT-1'
     }
+    
+    environment {
+        appVersion = ''
 
+    }
 
     stages {
         stage('read packagejson') {
@@ -15,6 +19,14 @@ pipeline {
 
                 }
                 
+            }
+        }
+
+        stage('building the image') {
+            steps {
+                script {
+                    withAWS(credentials: 'aws-auth', region: 'us-east-1')
+                }
             }
         }
     }
