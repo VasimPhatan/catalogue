@@ -26,7 +26,45 @@ pipeline {
             }
         }
 
-        stage('building the image') {
+        stage('Install dependencies') {
+            steps {
+                script {
+                    sh """
+                     npm install
+                    """
+                }
+            }
+        }
+
+        stage('unit testing') {
+            steps {
+                script {
+                    sh """
+                      echo "unit testing"
+                    """
+                }
+            }
+        }
+
+
+        stage('sonar scan') {
+            environment {  //here we passing sonar tool 
+                scannerHome = tool 'sonar-8.1'
+            }
+
+            steps {
+                script {
+                    //sonar server environment.
+                    withSonarQubeEnv( InstallationName: 'sonar-8.1') { // this will inject the sonar server and authentication all these will inject 
+                    sh "${scannerHome}/bin/sonar-scanner"  //in order to run this we need sonar-rproject.properties this will give by developers
+                    } 
+
+                }
+            }
+        }
+
+
+        /* stage('building the image') {
             steps {
                 script {
                     withAWS(credentials: 'aws-auth', region: 'us-east-1') {
@@ -40,7 +78,7 @@ pipeline {
                   
                 }
             }
-        }
+        } */
     }
 
 
