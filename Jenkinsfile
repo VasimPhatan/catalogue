@@ -68,7 +68,7 @@ pipeline {
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
             // Automatically fails and halts the build if status is not 'OK'
-                waitForQualityGate abortPipeline: false
+                waitForQualityGate abortPipeline: true
                 }
             }
         }
