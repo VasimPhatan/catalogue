@@ -64,6 +64,16 @@ pipeline {
         }
 
 
+        stage('quality gate check') {
+            steps {
+                timeout(time: 5, unit: 'MINUTES') {
+                // Automatically fails and halts the build if status is not 'OK'
+                waitForQualityGate abortPipeline: false
+            }
+        }
+        
+
+
         /* stage('building the image') {
             steps {
                 script {
