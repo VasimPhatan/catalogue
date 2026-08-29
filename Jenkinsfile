@@ -132,7 +132,7 @@ pipeline {
         stage('Check Scan Results') {
             steps {
                 script {
-                    withAWS(credentials: 'aws-creds', region: 'us-east-1') {
+                    withAWS(credentials: 'aws-auth', region: 'us-east-1') {
                     // Fetch scan findings
                         def findings = sh(
                             script: """
