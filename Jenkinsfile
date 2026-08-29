@@ -111,7 +111,7 @@ pipeline {
         
 
 
-        /* stage('building the image') {
+        stage('building the image') {
             steps {
                 script {
                     withAWS(credentials: 'aws-auth', region: 'us-east-1') {
@@ -125,7 +125,7 @@ pipeline {
                   
                 }
             }
-        } */
+        }
     }
 
 
