@@ -64,11 +64,12 @@ pipeline {
         }
 
 
-        stage('quality gate check') {
+        stage("Quality Gate Check") {
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
-                // Automatically fails and halts the build if status is not 'OK'
+            // Automatically fails and halts the build if status is not 'OK'
                 waitForQualityGate abortPipeline: false
+                }
             }
         }
         
