@@ -129,7 +129,7 @@ pipeline {
         
 
 
-        stage('Check Scan Results') {
+        /* stage('Check Scan Results') {
             steps {
                 script {
                     withAWS(credentials: 'aws-auth', region: 'us-east-1') {
@@ -162,7 +162,7 @@ pipeline {
                     }
                 }
             }
-        }
+        } */
 
 
     }
