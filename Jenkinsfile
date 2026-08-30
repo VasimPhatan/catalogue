@@ -13,6 +13,10 @@ pipeline {
 
     }
 
+     parameters {
+        booleanParam(name: 'deploy', defaultValue: false, description: 'Toggle this value') //Deploy stage is skipped because we have kept value as false 
+    }
+
     stages {
         stage('read packagejson') {
             steps {
@@ -163,6 +167,25 @@ pipeline {
                 }
             }
         } */
+
+
+        stage('Trigger deploy') {
+            when {
+                expression {params.deploy} //Trigger deploy stage should run or be skipped .
+            }
+            steps {
+                script {
+                    build job: catalogue-cd 
+                    parameters: [ //we are passing the appversion and environmnet to the cd job.
+                        string(name: 'appVersion', value: "${appVersion}"),
+                        string(name: 'deploy_to', value: 'dev')
+                    ],
+                    propagate: false,  // even cd fails ci will not be effected
+                    wait: false // ci will not wait for cd pipeline completion
+
+                }
+            }
+        }
 
 
     }
