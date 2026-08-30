@@ -179,7 +179,7 @@ pipeline {
                     parameters: [ //we are passing the appversion and environmnet to the cd job.
                         string(name: 'appVersion', value: "${appVersion}"),
                         string(name: 'deploy_to', value: 'dev')
-                    ],
+                    ]
                     propagate: false,  // even cd fails ci will not be effected
                     wait: false // ci will not wait for cd pipeline completion
 
