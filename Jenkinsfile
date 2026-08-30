@@ -175,8 +175,8 @@ pipeline {
             }
             steps {
                 script {
-                    build job: catalogue-cd 
-                    parameters: [ //we are passing the appversion and environmnet to the cd job.
+                    build job: 'catalogue-cd',
+                    parameters: [
                         string(name: 'appVersion', value: "${appVersion}"),
                         string(name: 'deploy_to', value: 'dev')
                     ],
